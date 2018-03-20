@@ -1,24 +1,32 @@
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using Readit.ViewModel;
-using Xamarin.Forms;
+using RedditSharp;
 
 namespace Readit.View
 {
-    public partial class PostView : ContentPage
+    public partial class PostView
     {
         public PostView()
         {
             InitializeComponent();
-            PostListView.ItemsSource = GetPosts();
+            PostListView.ItemsSource = Posts;
+            UpdatePosts();
         }
 
-        private static IEnumerable<PostViewModel> GetPosts()
+        private static ObservableCollection<PostViewModel> Posts { get; set; }
+
+        private static async void UpdatePosts()
         {
-            return new ObservableCollection<PostViewModel>
+            await new Reddit().RSlashAll.GetPosts().Take(10).ForEachAsync(post =>
             {
-                new PostViewModel {Title = "Test1", Subreddit = "Test2", Author = "Test3"}
-            };
+                Posts.Add(new PostViewModel
+                {
+                    Title = post.Title,
+                    Subreddit = post.SubredditName,
+                    Author = post.AuthorName
+                });
+            });
         }
     }
 }

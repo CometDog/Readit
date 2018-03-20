@@ -1,9 +1,8 @@
 ﻿using Readit.ViewModel;
-using Xamarin.Forms;
 
 namespace Readit.View
 {
-    public partial class PostViewCell : ViewCell
+    public partial class PostViewCell
     {
         public PostViewCell()
         {

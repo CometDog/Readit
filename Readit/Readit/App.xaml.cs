@@ -3,7 +3,7 @@ using Xamarin.Forms;
 
 namespace Readit
 {
-    public partial class App : Application
+    public partial class App
     {
         public App()
         {
