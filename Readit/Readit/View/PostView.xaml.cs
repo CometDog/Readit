@@ -7,7 +7,7 @@ namespace Readit.View
 {
     public partial class PostView : PostContract.IView
     {
-        private readonly PostPresenter _presenter;
+        private readonly PostContract.IPresenter _presenter;
 
         public PostView()
         {
