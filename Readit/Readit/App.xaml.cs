@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
+﻿using Readit.View;
 using Xamarin.Forms;
 
 namespace Readit
@@ -13,7 +9,8 @@ namespace Readit
 		{
 			InitializeComponent();
 
-			MainPage = new Readit.MainPage();
+			MainPage = new NavigationPage();
+			MainPage.Navigation.PushAsync(new PostView());
 		}
 
 		protected override void OnStart ()
