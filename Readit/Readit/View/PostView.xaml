@@ -1,21 +1,15 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
+
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:view="clr-namespace:Readit.View;assembly=Readit"
              x:Class="Readit.View.PostView">
-    
+
     <ContentPage.Content>
         <ListView x:Name="PostListView" RowHeight="60">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <ViewCell>
-                        <StackLayout Orientation="Horizontal" HorizontalOptions="Fill">
-                            <StackLayout Orientation="Vertical">
-                                <Label Text = "{Binding Title, Source={x:Reference PostViewModel}}" FontSize="24" AbsoluteLayout.LayoutBounds="0.25, 0.25, 400, 40"/>
-                                <Label Text = "{Binding Subreddit, Source={x:Reference PostViewModel}}" FontSize="16" AbsoluteLayout.LayoutBounds="50, 35, 200, 25"/>
-                                <Label Text = "{Binding Author, Source={x:Reference PostViewModel}}" FontSize="16" AbsoluteLayout.LayoutBounds="50, 35, 200, 25"/>
-                            </StackLayout>
-                        </StackLayout>
-                    </ViewCell>
+                    <view:PostViewCell />
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
