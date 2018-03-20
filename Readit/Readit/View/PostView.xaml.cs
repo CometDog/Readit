@@ -1,32 +1,22 @@
 using System.Collections.ObjectModel;
-using System.Linq;
-using Readit.ViewModel;
-using RedditSharp;
+using Readit.Contract;
+using Readit.Model;
+using Readit.Presenter;
 
 namespace Readit.View
 {
-    public partial class PostView
+    public partial class PostView : PostContract.IView
     {
+        private readonly PostPresenter _presenter;
+
         public PostView()
         {
+            _presenter = new PostPresenter(this);
             InitializeComponent();
             PostListView.ItemsSource = Posts;
-            UpdatePosts();
+            _presenter.UpdatePosts();
         }
 
-        private static ObservableCollection<PostViewModel> Posts { get; set; }
-
-        private static async void UpdatePosts()
-        {
-            await new Reddit().RSlashAll.GetPosts().Take(10).ForEachAsync(post =>
-            {
-                Posts.Add(new PostViewModel
-                {
-                    Title = post.Title,
-                    Subreddit = post.SubredditName,
-                    Author = post.AuthorName
-                });
-            });
-        }
+        public ObservableCollection<PostModel> Posts { get; set; }
     }
 }

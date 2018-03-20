@@ -1,4 +1,4 @@
-﻿using Readit.ViewModel;
+﻿using Readit.Model;
 
 namespace Readit.View
 {
@@ -12,7 +12,7 @@ namespace Readit.View
         protected override void OnBindingContextChanged()
         {
             base.OnBindingContextChanged();
-            if (!(BindingContext is PostViewModel item)) return;
+            if (!(BindingContext is PostModel item)) return;
             Title.Text = item.Title;
             Subreddit.Text = item.Subreddit;
             Author.Text = item.Author;
