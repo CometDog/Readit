@@ -13,10 +13,17 @@ namespace Readit.View
         {
             _presenter = new PostPresenter(this);
             InitializeComponent();
+
+            Posts = new ObservableCollection<PostModel>();
             PostListView.ItemsSource = Posts;
             _presenter.UpdatePosts();
         }
 
-        public ObservableCollection<PostModel> Posts { get; set; }
+        private ObservableCollection<PostModel> Posts { get; }
+
+        public void AddPosts(FrontPageModel model)
+        {
+            foreach (var childrenModel in model.Data.Children) Posts.Add(childrenModel.Data);
+        }
     }
 }

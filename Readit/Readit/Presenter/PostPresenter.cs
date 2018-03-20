@@ -19,7 +19,7 @@ namespace Readit.Presenter
         {
             var json = await new HttpClient().GetStringAsync("https://www.reddit.com/.json");
             var frontPage = JsonConvert.DeserializeObject<FrontPageModel>(json);
-            foreach (var childrenModel in frontPage.Data.Children) _view.Posts.Add(childrenModel.Data);
+            _view.AddPosts(frontPage);
         }
     }
 }

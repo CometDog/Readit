@@ -1,5 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using Readit.Model;
+﻿using Readit.Model;
 
 namespace Readit.Contract
 {
@@ -7,7 +6,7 @@ namespace Readit.Contract
     {
         public interface IView
         {
-            ObservableCollection<PostModel> Posts { get; set; }
+            void AddPosts(FrontPageModel model);
         }
 
         public interface IPresenter
