@@ -5,7 +5,8 @@ namespace Readit.Model
 {
     public class FrontPageModel
     {
-        [JsonProperty(PropertyName = "data")] public ListingModel Data { get; set; }
+        [JsonProperty(PropertyName = "data")]
+        public ListingModel Data { get; set; }
     }
 
     public class ListingModel
@@ -16,12 +17,14 @@ namespace Readit.Model
 
     public class ChildrenModel
     {
-        [JsonProperty(PropertyName = "data")] public PostModel Data { get; set; }
+        [JsonProperty(PropertyName = "data")]
+        public PostModel Data { get; set; }
     }
 
     public class PostModel
     {
-        [JsonProperty(PropertyName = "title")] public string Title { get; set; }
+        [JsonProperty(PropertyName = "title")]
+        public string Title { get; set; }
 
         [JsonProperty(PropertyName = "subreddit")]
         public string Subreddit { get; set; }

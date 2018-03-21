@@ -6,7 +6,7 @@
              x:Class="Readit.View.PostView">
 
     <ContentPage.Content>
-        <ListView x:Name="PostListView" RowHeight="60">
+        <ListView x:Name="PostListView" VerticalOptions="FillAndExpand" HasUnevenRows="true">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <view:PostViewCell />
