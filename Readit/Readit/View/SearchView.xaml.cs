@@ -18,14 +18,14 @@ namespace Readit.View
 
         private async void Search(object sender, EventArgs e)
         {
+            SetReturnValue(SubredditEntry.Text);
             await Navigation.PopAsync();
         }
 
-        protected override void OnDisappearing()
+        private void SetReturnValue(string text)
         {
-            base.OnDisappearing();
-            if (SubredditEntry.Text != null && PagePoppedTask.IsCompleted == false)
-                _returnValue.SetResult($"/r/{SubredditEntry.Text.Split('/').Last()}");
+            if (text != null && PagePoppedTask.IsCompleted == false)
+                _returnValue.SetResult($"/r/{text.Split('/').Last()}");
             else
                 _returnValue.SetResult(null);
         }
