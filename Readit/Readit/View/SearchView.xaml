@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:view="clr-namespace:Readit.View;assembly=Readit"
+             x:Class="Readit.View.SearchView"
+             Title="Search">
+
+    <ContentPage.Content>
+        <StackLayout>
+            <Entry
+                x:Name="SubredditEntry"
+                Placeholder="Subreddit" />
+            <Button
+                Text="Search"
+                Clicked="Search" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
