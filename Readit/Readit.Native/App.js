@@ -1,13 +1,27 @@
 import React from 'react';
-import { StyleSheet, Text, View, FlatList } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  FlatList,
+  TouchableOpacity
+} from 'react-native';
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       posts: [
-        { title: 'Hello, world!', subreddit: '/foo', author: 'pramser' },
-        { title: 'Foo bar', subreddit: '/bar', author: 'jdowns' }
+        {
+          title: 'Hello, world!',
+          subreddit: '/foo',
+          author: 'pramser'
+        },
+        {
+          title: 'Foo bar',
+          subreddit: '/bar',
+          author: 'jdowns'
+        }
       ]
     };
   }
@@ -17,7 +31,11 @@ export default class App extends React.Component {
       .then(function(res) {
         return res.json();
       })
-      .then(json => this.setState({ posts: json.data.children }))
+      .then(json =>
+        this.setState({
+          posts: json.data.children
+        })
+      )
       .catch(err => console.log(err));
   }
 
@@ -28,8 +46,12 @@ export default class App extends React.Component {
           style={styles.posts}
           data={this.state.posts}
           keyExtractor={(item, index) => index}
-          renderItem={({ title, subreddit, author }) => (
-            <Story title={title} sub={subreddit} author={author} />
+          renderItem={({ item: { data }, index }) => (
+            <Story
+              title={data ? data.title : ''}
+              sub={data ? data.title : ''}
+              author={data ? data.title : ''}
+            />
           )}
         />
       </View>
@@ -40,11 +62,11 @@ export default class App extends React.Component {
 class Story extends React.Component {
   render() {
     return (
-      <View style={styles.story}>
-        <Text>{this.props.title}</Text>
-        <Text>{this.props.sub}</Text>
-        <Text>{this.props.author}</Text>
-      </View>
+      <TouchableOpacity style={styles.story}>
+        <Text> {this.props.title} </Text>
+        <Text> {this.props.sub} </Text>
+        <Text> {this.props.author} </Text>
+      </TouchableOpacity>
     );
   }
 }
