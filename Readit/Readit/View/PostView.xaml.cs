@@ -22,16 +22,16 @@ namespace Readit.View
 
         private ObservableCollection<PostModel> Posts { get; }
 
-        public void RequestUpdate(string subreddit, bool clearList = false)
+        public void AddPosts(SubredditModel model)
+        {
+            foreach (var childrenModel in model.Data.Children) Posts.Add(childrenModel.Data);
+        }
+
+        private void RequestUpdate(string subreddit, bool clearList = false)
         {
             SetTitle(subreddit);
             if (clearList) Posts.Clear();
             _presenter.UpdatePosts(subreddit);
-        }
-
-        public void AddPosts(SubredditModel model)
-        {
-            foreach (var childrenModel in model.Data.Children) Posts.Add(childrenModel.Data);
         }
 
         private void SetTitle(string title)

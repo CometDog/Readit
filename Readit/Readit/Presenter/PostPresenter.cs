@@ -16,7 +16,7 @@ namespace Readit.Presenter
 
         public async void UpdatePosts(string subreddit = "")
         {
-            var json = await new HttpClient().GetStringAsync("https://www.reddit.com" + subreddit + "/.json");
+            var json = await new HttpClient().GetStringAsync($"https://www.reddit.com{subreddit}/.json");
             var frontPage = JsonConvert.DeserializeObject<SubredditModel>(json);
             _view.AddPosts(frontPage);
         }
