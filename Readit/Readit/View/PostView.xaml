@@ -5,6 +5,9 @@
              xmlns:view="clr-namespace:Readit.View;assembly=Readit"
              x:Class="Readit.View.PostView">
 
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Search" Clicked="ShowSearchScreen" />
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <ListView x:Name="PostListView" VerticalOptions="FillAndExpand" HasUnevenRows="true">
             <ListView.ItemTemplate>

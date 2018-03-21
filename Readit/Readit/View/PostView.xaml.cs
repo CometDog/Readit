@@ -1,3 +1,4 @@
+using System;
 using System.Collections.ObjectModel;
 using Readit.Contract;
 using Readit.Model;
@@ -16,11 +17,17 @@ namespace Readit.View
 
             Posts = new ObservableCollection<PostModel>();
             PostListView.ItemsSource = Posts;
-            _presenter.UpdatePosts("/r/mechanicalkeyboards");
-            SetTitle("/r/mechanicalkeyboards");
+            RequestUpdate("");
         }
 
         private ObservableCollection<PostModel> Posts { get; }
+
+        public void RequestUpdate(string subreddit, bool clearList = false)
+        {
+            SetTitle(subreddit);
+            if (clearList) Posts.Clear();
+            _presenter.UpdatePosts(subreddit);
+        }
 
         public void AddPosts(SubredditModel model)
         {
@@ -29,7 +36,13 @@ namespace Readit.View
 
         private void SetTitle(string title)
         {
+            if (title == "") title = "Front Page";
             Title = title;
+        }
+
+        private async void ShowSearchScreen(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new SearchView(this));
         }
     }
 }

@@ -6,6 +6,7 @@ namespace Readit.Contract
     {
         public interface IView
         {
+            void RequestUpdate(string subreddit, bool clearList = false);
             void AddPosts(SubredditModel model);
         }
 

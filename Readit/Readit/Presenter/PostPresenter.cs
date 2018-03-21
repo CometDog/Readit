@@ -2,7 +2,6 @@
 using Newtonsoft.Json;
 using Readit.Contract;
 using Readit.Model;
-using Readit.View;
 
 namespace Readit.Presenter
 {
@@ -10,7 +9,7 @@ namespace Readit.Presenter
     {
         private readonly PostContract.IView _view;
 
-        public PostPresenter(PostView view)
+        public PostPresenter(PostContract.IView view)
         {
             _view = view;
         }
