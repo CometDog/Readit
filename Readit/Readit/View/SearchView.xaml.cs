@@ -1,23 +1,33 @@
 ﻿using System;
 using System.Linq;
-using Readit.Contract;
+using System.Threading.Tasks;
 
 namespace Readit.View
 {
     public partial class SearchView
     {
-        private readonly PostContract.IView _view;
+        private readonly TaskCompletionSource<string> _returnValue;
 
-        public SearchView(PostContract.IView view)
+        public SearchView()
         {
-            _view = view;
+            _returnValue = new TaskCompletionSource<string>();
             InitializeComponent();
         }
 
+        public Task<string> PagePoppedTask => _returnValue.Task;
+
         private async void Search(object sender, EventArgs e)
         {
-            _view.RequestUpdate($"/r/{SubredditEntry.Text.Split('/').Last()}", true);
             await Navigation.PopAsync();
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            if (SubredditEntry.Text != null && PagePoppedTask.IsCompleted == false)
+                _returnValue.SetResult($"/r/{SubredditEntry.Text.Split('/').Last()}");
+            else
+                _returnValue.SetResult(null);
         }
     }
 }

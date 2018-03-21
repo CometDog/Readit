@@ -42,7 +42,10 @@ namespace Readit.View
 
         private async void ShowSearchScreen(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new SearchView(this));
+            var searchView = new SearchView();
+            await Navigation.PushAsync(searchView);
+            var subreddit = await searchView.PagePoppedTask;
+            if (subreddit != null) RequestUpdate(subreddit, true);
         }
     }
 }
