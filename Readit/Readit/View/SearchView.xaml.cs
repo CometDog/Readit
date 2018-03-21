@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Readit.Contract;
 
 namespace Readit.View
@@ -15,7 +16,7 @@ namespace Readit.View
 
         private async void Search(object sender, EventArgs e)
         {
-            _view.RequestUpdate("/r/mechanicalkeyboards", true);
+            _view.RequestUpdate($"/r/{SubredditEntry.Text.Split('/').Last()}", true);
             await Navigation.PopAsync();
         }
     }

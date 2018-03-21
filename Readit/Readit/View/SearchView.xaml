@@ -7,8 +7,13 @@
              Title="Search">
 
     <ContentPage.Content>
-        <Button
-            Text="Search"
-            Clicked="Search" />
+        <StackLayout>
+            <Entry
+                x:Name="SubredditEntry"
+                Placeholder="Subreddit" />
+            <Button
+                Text="Search"
+                Clicked="Search" />
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>
