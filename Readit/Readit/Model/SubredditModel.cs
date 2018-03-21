@@ -32,6 +32,9 @@ namespace Readit.Model
         [JsonProperty(PropertyName = "author")]
         public string Author { get; set; }
 
+        [JsonProperty(PropertyName = "url")]
+        public string Url { get; set; }
+
         [JsonProperty(PropertyName = "preview")]
         public PreviewModel Preview { get; set; }
     }

@@ -11,6 +11,6 @@
                 <Label FontSize="12" LineBreakMode="TailTruncation" x:Name="Author" />
             </StackLayout>
         </StackLayout>
-        <Image x:Name="Thumbnail" HorizontalOptions="End" />
+        <Image IsVisible="false" WidthRequest="50" HeightRequest="50" x:Name="Thumbnail" HorizontalOptions="End" />
     </StackLayout>
 </ViewCell>
