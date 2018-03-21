@@ -6,12 +6,12 @@ namespace Readit.Contract
     {
         public interface IView
         {
-            void AddPosts(FrontPageModel model);
+            void AddPosts(SubredditModel model);
         }
 
         public interface IPresenter
         {
-            void UpdatePosts();
+            void UpdatePosts(string subreddit = "");
         }
     }
 }

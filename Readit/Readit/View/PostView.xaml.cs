@@ -16,14 +16,20 @@ namespace Readit.View
 
             Posts = new ObservableCollection<PostModel>();
             PostListView.ItemsSource = Posts;
-            _presenter.UpdatePosts();
+            _presenter.UpdatePosts("/r/mechanicalkeyboards");
+            SetTitle("/r/mechanicalkeyboards");
         }
 
         private ObservableCollection<PostModel> Posts { get; }
 
-        public void AddPosts(FrontPageModel model)
+        public void AddPosts(SubredditModel model)
         {
             foreach (var childrenModel in model.Data.Children) Posts.Add(childrenModel.Data);
+        }
+
+        private void SetTitle(string title)
+        {
+            Title = title;
         }
     }
 }

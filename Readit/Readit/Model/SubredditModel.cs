@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace Readit.Model
 {
-    public class FrontPageModel
+    public class SubredditModel
     {
         [JsonProperty(PropertyName = "data")]
         public ListingModel Data { get; set; }

@@ -15,10 +15,10 @@ namespace Readit.Presenter
             _view = view;
         }
 
-        public async void UpdatePosts()
+        public async void UpdatePosts(string subreddit = "")
         {
-            var json = await new HttpClient().GetStringAsync("https://www.reddit.com/.json");
-            var frontPage = JsonConvert.DeserializeObject<FrontPageModel>(json);
+            var json = await new HttpClient().GetStringAsync("https://www.reddit.com" + subreddit + "/.json");
+            var frontPage = JsonConvert.DeserializeObject<SubredditModel>(json);
             _view.AddPosts(frontPage);
         }
     }
