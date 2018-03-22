@@ -16,18 +16,18 @@ namespace Readit.View
         protected override void OnBindingContextChanged()
         {
             base.OnBindingContextChanged();
-            if (!(BindingContext is List<CommentModel> items)) return;
+            if (!(BindingContext is List<PostsCommentModel> items)) return;
             foreach (var item in items) AddViews(item);
         }
 
-        private void AddViews(CommentModel item)
+        private void AddViews(PostsCommentModel item)
         {
             Children.Add(BuildView(item));
             if (item.Replies == null) return;
             foreach (var reply in item.Replies.Data.Children) AddViews(reply.Data);
         }
 
-        private StackLayout BuildView(CommentModel item)
+        private StackLayout BuildView(PostsCommentModel item)
         {
             var verticalStackLayout = new StackLayout
             {

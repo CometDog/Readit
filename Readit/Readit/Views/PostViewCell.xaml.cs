@@ -15,7 +15,7 @@ namespace Readit.View
         protected override void OnBindingContextChanged()
         {
             base.OnBindingContextChanged();
-            if (!(BindingContext is PostModel item)) return;
+            if (!(BindingContext is SubredditPostModel item)) return;
 
             var gesture = new TapGestureRecognizer();
             gesture.Tapped += (sender, eventArgs) => { MessagingCenter.Send(this, "PostClicked", item.Permalink); };
@@ -25,14 +25,14 @@ namespace Readit.View
             if (!item.Self) SetThumbnail(item);
         }
 
-        private void SetTextViews(PostModel item)
+        private void SetTextViews(SubredditPostModel item)
         {
             Title.Text = item.Title;
             Subreddit.Text = item.Subreddit;
             Author.Text = item.Author;
         }
 
-        private void SetThumbnail(PostModel item)
+        private void SetThumbnail(SubredditPostModel item)
         {
             Thumbnail.IsVisible = true;
 

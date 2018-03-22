@@ -15,18 +15,18 @@ namespace Readit.View
             _presenter = new CommentPresenter(this);
             InitializeComponent();
 
-            Comments = new ObservableCollection<List<CommentModel>>();
+            Comments = new ObservableCollection<List<PostsCommentModel>>();
             CommentListView.ItemsSource = Comments;
             _presenter.UpdateComments(commentPermalink);
         }
 
-        private ObservableCollection<List<CommentModel>> Comments { get; }
+        private ObservableCollection<List<PostsCommentModel>> Comments { get; }
 
-        public void AddComments(List<CommentsModel> models)
+        public void AddComments(List<PostsModel> models)
         {
             foreach (var model in models)
             {
-                var commentList = new List<CommentModel>();
+                var commentList = new List<PostsCommentModel>();
                 foreach (var childrenModel in model.Data.Children)
                     if (childrenModel.Kind == "t1")
                         commentList.Add(childrenModel.Data);

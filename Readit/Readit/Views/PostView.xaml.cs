@@ -22,12 +22,12 @@ namespace Readit.View
 
             SearchItem.Clicked += (sender, args) => _navigator.ShowSearchScreen();
 
-            Posts = new ObservableCollection<PostModel>();
+            Posts = new ObservableCollection<SubredditPostModel>();
             PostListView.ItemsSource = Posts;
             RequestUpdate();
         }
 
-        private ObservableCollection<PostModel> Posts { get; }
+        private ObservableCollection<SubredditPostModel> Posts { get; }
 
         public void AddPosts(SubredditModel model)
         {

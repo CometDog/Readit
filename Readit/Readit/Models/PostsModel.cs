@@ -3,28 +3,28 @@ using Newtonsoft.Json;
 
 namespace Readit.Model
 {
-    public class CommentsModel
+    public class PostsModel
     {
         [JsonProperty(PropertyName = "data")]
-        public CommentListingModel Data { get; set; }
+        public PostsListingModel Data { get; set; }
     }
 
-    public class CommentListingModel
+    public class PostsListingModel
     {
         [JsonProperty(PropertyName = "children")]
-        public List<CommentChildrenModel> Children { get; set; }
+        public List<PostsChildrenModel> Children { get; set; }
     }
 
-    public class CommentChildrenModel
+    public class PostsChildrenModel
     {
         [JsonProperty(PropertyName = "kind")]
         public string Kind { get; set; }
 
         [JsonProperty(PropertyName = "data")]
-        public CommentModel Data { get; set; }
+        public PostsCommentModel Data { get; set; }
     }
 
-    public class CommentModel
+    public class PostsCommentModel
     {
         [JsonProperty(PropertyName = "body")]
         public string Body { get; set; }
@@ -36,6 +36,6 @@ namespace Readit.Model
         public string Created { get; set; }
 
         [JsonProperty(PropertyName = "replies")]
-        public CommentsModel Replies { get; set; }
+        public PostsModel Replies { get; set; }
     }
 }

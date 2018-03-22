@@ -18,7 +18,7 @@ namespace Readit.Presenter
         public async void UpdateComments(string commentPermalink)
         {
             var json = await new HttpClient().GetStringAsync($"https://www.reddit.com{commentPermalink}/.json");
-            var comments = JsonConvert.DeserializeObject<List<CommentsModel>>(json);
+            var comments = JsonConvert.DeserializeObject<List<PostsModel>>(json);
             _view.AddComments(comments);
         }
     }

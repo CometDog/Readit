@@ -7,7 +7,7 @@ namespace Readit.Contract
     {
         public interface IView
         {
-            void AddComments(List<CommentsModel> models);
+            void AddComments(List<PostsModel> models);
         }
 
         public interface IPresenter

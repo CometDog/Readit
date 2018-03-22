@@ -6,22 +6,22 @@ namespace Readit.Model
     public class SubredditModel
     {
         [JsonProperty(PropertyName = "data")]
-        public ListingModel Data { get; set; }
+        public SubredditListingModel Data { get; set; }
     }
 
-    public class ListingModel
+    public class SubredditListingModel
     {
         [JsonProperty(PropertyName = "children")]
-        public List<ChildrenModel> Children { get; set; }
+        public List<SubredditChildrenModel> Children { get; set; }
     }
 
-    public class ChildrenModel
+    public class SubredditChildrenModel
     {
         [JsonProperty(PropertyName = "data")]
-        public PostModel Data { get; set; }
+        public SubredditPostModel Data { get; set; }
     }
 
-    public class PostModel
+    public class SubredditPostModel
     {
         [JsonProperty(PropertyName = "title")]
         public string Title { get; set; }
@@ -45,25 +45,25 @@ namespace Readit.Model
         public bool Self { get; set; }
 
         [JsonProperty(PropertyName = "preview")]
-        public PreviewModel Preview { get; set; }
+        public SubredditPreviewModel Preview { get; set; }
     }
 
-    public class PreviewModel
+    public class SubredditPreviewModel
     {
         [JsonProperty(PropertyName = "images")]
-        public List<ImagesModel> Images { get; set; }
+        public List<SubredditImagesModel> Images { get; set; }
     }
 
-    public class ImagesModel
+    public class SubredditImagesModel
     {
         [JsonProperty(PropertyName = "source")]
-        public ImageModel Source { get; set; }
+        public SubredditImageModel Source { get; set; }
 
         [JsonProperty(PropertyName = "resolutions")]
-        public List<ImageModel> Resolutions { get; set; }
+        public List<SubredditImageModel> Resolutions { get; set; }
     }
 
-    public class ImageModel
+    public class SubredditImageModel
     {
         [JsonProperty(PropertyName = "url")]
         public string Url { get; set; }
