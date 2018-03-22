@@ -4,7 +4,7 @@
           xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
           x:Class="Readit.View.PostViewCell">
     <StackLayout Orientation="Horizontal" Padding="16,8">
-        <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+        <StackLayout x:Name="Content" Orientation="Vertical" HorizontalOptions="FillAndExpand">
             <Label FontSize="16" x:Name="Title" />
             <StackLayout Orientation="Horizontal">
                 <Label FontSize="12" LineBreakMode="TailTruncation" x:Name="Subreddit" />

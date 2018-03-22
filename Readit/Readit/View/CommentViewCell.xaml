@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ViewCell xmlns="http://xamarin.com/schemas/2014/forms"
+          xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+          x:Class="Readit.View.CommentViewCell">
+
+    <StackLayout Orientation="Vertical" Padding="16,8">
+        <StackLayout Orientation="Horizontal">
+            <Label FontSize="12" LineBreakMode="TailTruncation" x:Name="Author" />
+            <Label FontSize="12" LineBreakMode="TailTruncation" x:Name="TimeSincePost" />
+        </StackLayout>
+        <Label FontSize="16" x:Name="Comment" />
+    </StackLayout>
+</ViewCell>

@@ -11,7 +11,13 @@ namespace Readit.Contract
 
         public interface IPresenter
         {
-            void UpdatePosts(string subreddit = "");
+            void UpdatePosts(string subreddit);
+        }
+
+        public interface INavigator
+        {
+            void ShowSearchScreen();
+            void ShowCommentScreen(string commentPermalink);
         }
     }
 }

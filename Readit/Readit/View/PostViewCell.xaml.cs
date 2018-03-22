@@ -16,6 +16,11 @@ namespace Readit.View
         {
             base.OnBindingContextChanged();
             if (!(BindingContext is PostModel item)) return;
+
+            var gesture = new TapGestureRecognizer();
+            gesture.Tapped += (sender, eventArgs) => { MessagingCenter.Send(this, "PostClicked", item.Permalink); };
+            Content.GestureRecognizers.Add(gesture);
+
             SetTextViews(item);
             if (item.Preview != null || item.Url != null && !item.Url.Contains("reddit.com")) SetThumbnail(item);
         }

@@ -1,23 +1,30 @@
-using System;
 using System.Collections.ObjectModel;
 using Readit.Contract;
 using Readit.Model;
+using Readit.Navigator;
 using Readit.Presenter;
+using Xamarin.Forms;
 
 namespace Readit.View
 {
     public partial class PostView : PostContract.IView
     {
+        private readonly PostContract.INavigator _navigator;
         private readonly PostContract.IPresenter _presenter;
 
         public PostView()
         {
             _presenter = new PostPresenter(this);
+            _navigator = new PostNavigator(this);
+
+            SubscribeToMessages();
             InitializeComponent();
+
+            SearchItem.Clicked += (sender, args) => _navigator.ShowSearchScreen();
 
             Posts = new ObservableCollection<PostModel>();
             PostListView.ItemsSource = Posts;
-            RequestUpdate("");
+            RequestUpdate();
         }
 
         private ObservableCollection<PostModel> Posts { get; }
@@ -27,7 +34,20 @@ namespace Readit.View
             foreach (var childrenModel in model.Data.Children) Posts.Add(childrenModel.Data);
         }
 
-        private void RequestUpdate(string subreddit, bool clearList = false)
+        private void SubscribeToMessages()
+        {
+            MessagingCenter.Subscribe<PostViewCell, string>(this, "PostClicked", (sender, arg) =>
+            {
+                if (arg != null) _navigator.ShowCommentScreen(arg);
+            });
+
+            MessagingCenter.Subscribe<SearchView, string>(this, "UpdateSubreddit", (sender, arg) =>
+            {
+                if (arg != null) RequestUpdate(arg, true);
+            });
+        }
+
+        private void RequestUpdate(string subreddit = "", bool clearList = false)
         {
             SetTitle(subreddit);
             if (clearList) Posts.Clear();
@@ -38,14 +58,6 @@ namespace Readit.View
         {
             if (title == "") title = "Front Page";
             Title = title;
-        }
-
-        private async void ShowSearchScreen(object sender, EventArgs e)
-        {
-            var searchView = new SearchView();
-            await Navigation.PushAsync(searchView);
-            var subreddit = await searchView.PagePoppedTask;
-            if (subreddit != null) RequestUpdate(subreddit, true);
         }
     }
 }
