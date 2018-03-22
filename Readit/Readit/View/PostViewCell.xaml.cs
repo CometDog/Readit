@@ -22,7 +22,7 @@ namespace Readit.View
             Content.GestureRecognizers.Add(gesture);
 
             SetTextViews(item);
-            if (item.Preview != null || item.Url != null && !item.Url.Contains("reddit.com")) SetThumbnail(item);
+            if (!item.Self) SetThumbnail(item);
         }
 
         private void SetTextViews(PostModel item)
@@ -34,29 +34,13 @@ namespace Readit.View
 
         private void SetThumbnail(PostModel item)
         {
-            string url;
-            if (item.Preview != null)
-            {
-                var image = item.Preview.Images.First();
-                var thumbnail = image.Resolutions.First();
-                var source = image.Source;
-
-                var thumbnailUrl = thumbnail.Url.Replace("&amp;", "&");
-                url = source.Url.Replace("&amp;", "&");
-
-                Thumbnail.Source = ImageSource.FromUri(new Uri(thumbnailUrl));
-            }
-            else if (item.Url != null)
-            {
-                url = item.Url;
-                Thumbnail.Source = ImageSource.FromResource("Readit.Resources.Images.icon_link.png");
-            }
-            else
-            {
-                return;
-            }
-
             Thumbnail.IsVisible = true;
+            Thumbnail.Source = item.Thumbnail != "default"
+                ? ImageSource.FromUri(new Uri(item.Thumbnail))
+                : ImageSource.FromResource("Readit.Resources.Images.icon_link.png");
+            var url = item.Url != null
+                ? item.Url.Replace("&amp;", "&")
+                : item.Preview.Images.First().Source.Url.Replace("&amp;", "&");
 
             var gesture = new TapGestureRecognizer();
             gesture.Tapped += (sender, eventArgs) => { Device.OpenUri(new Uri(url)); };

@@ -35,8 +35,14 @@ namespace Readit.Model
         [JsonProperty(PropertyName = "permalink")]
         public string Permalink { get; set; }
 
+        [JsonProperty(PropertyName = "thumbnail")]
+        public string Thumbnail { get; set; }
+
         [JsonProperty(PropertyName = "url")]
         public string Url { get; set; }
+
+        [JsonProperty(PropertyName = "is_self")]
+        public bool Self { get; set; }
 
         [JsonProperty(PropertyName = "preview")]
         public PreviewModel Preview { get; set; }
