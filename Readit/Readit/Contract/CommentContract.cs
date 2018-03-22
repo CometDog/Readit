@@ -1,4 +1,5 @@
-﻿using Readit.Model;
+﻿using System.Collections.Generic;
+using Readit.Model;
 
 namespace Readit.Contract
 {
@@ -6,7 +7,7 @@ namespace Readit.Contract
     {
         public interface IView
         {
-            void AddComments(CommentsModel model);
+            void AddComments(List<CommentsModel> models);
         }
 
         public interface IPresenter

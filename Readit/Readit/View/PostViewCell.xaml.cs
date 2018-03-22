@@ -35,9 +35,23 @@ namespace Readit.View
         private void SetThumbnail(PostModel item)
         {
             Thumbnail.IsVisible = true;
-            Thumbnail.Source = item.Thumbnail != "default"
-                ? ImageSource.FromUri(new Uri(item.Thumbnail))
-                : ImageSource.FromResource("Readit.Resources.Images.icon_link.png");
+
+            ImageSource imageSource;
+            switch (item.Thumbnail)
+            {
+                case "default":
+                    imageSource = ImageSource.FromResource("Readit.Resources.Images.icon_link.png");
+                    break;
+                case "nsfw":
+                    imageSource = ImageSource.FromResource("Readit.Resources.Images.icon_nsfw.png");
+                    break;
+                default:
+                    imageSource = ImageSource.FromUri(new Uri(item.Thumbnail));
+                    break;
+            }
+
+            Thumbnail.Source = imageSource;
+
             var url = item.Url != null
                 ? item.Url.Replace("&amp;", "&")
                 : item.Preview.Images.First().Source.Url.Replace("&amp;", "&");

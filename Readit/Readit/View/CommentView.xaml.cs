@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using Readit.Contract;
 using Readit.Model;
 using Readit.Presenter;
@@ -14,16 +15,24 @@ namespace Readit.View
             _presenter = new CommentPresenter(this);
             InitializeComponent();
 
-            Comments = new ObservableCollection<CommentModel>();
+            Comments = new ObservableCollection<List<CommentModel>>();
             CommentListView.ItemsSource = Comments;
             _presenter.UpdateComments(commentPermalink);
         }
 
-        private ObservableCollection<CommentModel> Comments { get; }
+        private ObservableCollection<List<CommentModel>> Comments { get; }
 
-        public void AddComments(CommentsModel model)
+        public void AddComments(List<CommentsModel> models)
         {
-            foreach (var childrenModel in model.Data.Children) Comments.Add(childrenModel.Data);
+            foreach (var model in models)
+            {
+                var commentList = new List<CommentModel>();
+                foreach (var childrenModel in model.Data.Children)
+                    if (childrenModel.Kind == "t1")
+                        commentList.Add(childrenModel.Data);
+
+                if (commentList.Count > 0) Comments.Add(commentList);
+            }
         }
     }
 }

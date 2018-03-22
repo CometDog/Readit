@@ -1,4 +1,5 @@
-﻿using System.Net.Http;
+﻿using System.Collections.Generic;
+using System.Net.Http;
 using Newtonsoft.Json;
 using Readit.Contract;
 using Readit.Model;
@@ -17,7 +18,7 @@ namespace Readit.Presenter
         public async void UpdateComments(string commentPermalink)
         {
             var json = await new HttpClient().GetStringAsync($"https://www.reddit.com{commentPermalink}/.json");
-            var comments = JsonConvert.DeserializeObject<CommentsModel>(json);
+            var comments = JsonConvert.DeserializeObject<List<CommentsModel>>(json);
             _view.AddComments(comments);
         }
     }

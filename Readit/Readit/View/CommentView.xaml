@@ -9,7 +9,7 @@
         <ListView x:Name="CommentListView" VerticalOptions="FillAndExpand" HasUnevenRows="true">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <view:CommentViewCell />
+                    <view:CommentStackLayout />
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
