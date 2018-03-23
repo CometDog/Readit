@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Net.Http;
 using Newtonsoft.Json;
-using Readit.Contract;
-using Readit.Model;
+using Readit.Contracts;
+using Readit.Models;
 
-namespace Readit.Presenter
+namespace Readit.Presenters
 {
     public class CommentPresenter : CommentContract.IPresenter
     {

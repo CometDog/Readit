@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Linq;
-using Readit.Model;
+using Readit.Models;
 using Xamarin.Forms;
 
-namespace Readit.View
+namespace Readit.Views
 {
     public partial class PostViewCell
     {

@@ -2,13 +2,13 @@
 
 <ViewCell xmlns="http://xamarin.com/schemas/2014/forms"
           xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-          x:Class="Readit.Views.PostViewCell">
+          x:Class="Readit.Views.CommentViewCell">
     <StackLayout Orientation="Horizontal" Padding="16,8">
         <StackLayout x:Name="Content" Orientation="Vertical" HorizontalOptions="FillAndExpand">
-            <Label FontSize="16" x:Name="Title" />
+            <Label FontSize="16" x:Name="Body" />
             <StackLayout Orientation="Horizontal">
-                <Label FontSize="12" LineBreakMode="TailTruncation" x:Name="Subreddit" />
                 <Label FontSize="12" LineBreakMode="TailTruncation" x:Name="Author" />
+                <Label FontSize="12" LineBreakMode="TailTruncation" x:Name="TimeSincePosted" />
             </StackLayout>
         </StackLayout>
         <Image IsVisible="false" WidthRequest="50" HeightRequest="50" x:Name="Thumbnail" HorizontalOptions="End" />

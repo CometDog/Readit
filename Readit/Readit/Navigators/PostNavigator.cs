@@ -1,8 +1,8 @@
-﻿using Readit.Contract;
-using Readit.View;
+﻿using Readit.Contracts;
+using Readit.Views;
 using Xamarin.Forms;
 
-namespace Readit.Navigator
+namespace Readit.Navigators
 {
     public class PostNavigator : PostContract.INavigator
     {

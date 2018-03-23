@@ -1,4 +1,4 @@
-﻿using Readit.View;
+﻿using Readit.Views;
 using Xamarin.Forms;
 
 namespace Readit

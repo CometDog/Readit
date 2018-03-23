@@ -2,7 +2,7 @@
 using System.Linq;
 using Xamarin.Forms;
 
-namespace Readit.View
+namespace Readit.Views
 {
     public partial class SearchView
     {

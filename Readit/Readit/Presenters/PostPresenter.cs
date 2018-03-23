@@ -1,9 +1,9 @@
 ﻿using System.Net.Http;
 using Newtonsoft.Json;
-using Readit.Contract;
-using Readit.Model;
+using Readit.Contracts;
+using Readit.Models;
 
-namespace Readit.Presenter
+namespace Readit.Presenters
 {
     public class PostPresenter : PostContract.IPresenter
     {

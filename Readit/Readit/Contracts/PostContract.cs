@@ -1,6 +1,6 @@
-﻿using Readit.Model;
+﻿using Readit.Models;
 
-namespace Readit.Contract
+namespace Readit.Contracts
 {
     public abstract class PostContract
     {

@@ -1,11 +1,11 @@
 using System.Collections.ObjectModel;
-using Readit.Contract;
-using Readit.Model;
-using Readit.Navigator;
-using Readit.Presenter;
+using Readit.Contracts;
+using Readit.Models;
+using Readit.Navigators;
+using Readit.Presenters;
 using Xamarin.Forms;
 
-namespace Readit.View
+namespace Readit.Views
 {
     public partial class PostView : PostContract.IView
     {

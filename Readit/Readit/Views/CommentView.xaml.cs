@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using Readit.Contract;
-using Readit.Model;
-using Readit.Presenter;
+using Readit.Contracts;
+using Readit.Models;
+using Readit.Presenters;
 
-namespace Readit.View
+namespace Readit.Views
 {
     public partial class CommentView : CommentContract.IView
     {
